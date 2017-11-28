@@ -1,0 +1,31 @@
+<web-app>
+
+	<servlet>
+		<servlet-name>MySqlConnector</servlet-name>
+		<servlet-class>MySqlConnector</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MySqlConnector</servlet-name>
+		<url-pattern>/MySqlConnector</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>UserRegister</servlet-name>
+		<servlet-class>UserRegister</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserRegister</servlet-name>
+		<url-pattern>/UserRegister</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UserLogin</servlet-name>
+		<servlet-class>UserLogin</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserLogin</servlet-name>
+		<url-pattern>/UserLogin</url-pattern>
+	</servlet-mapping>
+	
+</web-app>
