@@ -11,5 +11,6 @@ public class UserLogout extends HttpServlet{
 		session.invalidate();
 		RequestDispatcher rd = request.getRequestDispatcher("./blood.jsp");
 		rd.include(request, response);
+		//response.sendRedirect("./blood.jsp");
 	}
 }
