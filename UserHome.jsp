@@ -1,7 +1,4 @@
-<%@ page import = "java.sql.*" %>
-<%@ page import = "java.io.*" %>
-<%@ page import = "javax.servlet.*"%>
-<%@ page import = "javax.servlet.http.*" %>
+
 
 <html>
 	<head>
@@ -24,9 +21,9 @@
 					<div class="menu">
 						<ul>
 							<li><a href="UserHome.jsp">Home</a></li>
-							<li><a href="bloodbank1.jsp">Blood Bank</a></li>
-							<li><a href="bloodsearch1.jsp">Search Blood</a></li>
-							<li><a href="aboutus1.jsp">About us</a></li>
+							<li><a href="bloodbank.jsp">Blood Bank</a></li>
+							<li><a href="bloodsearch.jsp">Search Blood</a></li>
+							<li><a href="aboutus.jsp">About us</a></li>
 						</ul>
 					</div><!--menu-->
 				</div><!--navigation-->

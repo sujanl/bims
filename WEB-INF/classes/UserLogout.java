@@ -7,7 +7,7 @@ public class UserLogout extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		
 		HttpSession session = request.getSession();
-		session.removeAttribute("uName");
+		session.removeAttribute("uname");
 		session.invalidate();
 		RequestDispatcher rd = request.getRequestDispatcher("./blood.jsp");
 		rd.include(request, response);

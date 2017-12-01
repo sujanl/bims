@@ -32,32 +32,11 @@ public class UserLogin extends HttpServlet{
 				rd.include(request , response);
 			}
 			else if(!rsUser.next() && !rsAdmin.next()){
-				out.println("<h3>Login UnSuccessfull. Either Username or Password is invalid. <a href = "+"./login.jsp>Please try again</a>.</h3>");		
+				//out.println("<h3>Login UnSuccessfull. Either Username or Password is invalid. <a href = "+"./login.jsp>Please try again</a>.</h3>");		
+				request.setAttribute("alertMsg", "Username or password is incorrect");
+				rd=request.getRequestDispatcher("./login.jsp");
+				rd.include(request,response);
 			}
-			/*
-			while(rsUser.next()){
-				if(userName.equals(rsUser.getString("user_name")) && password.equals(rsUser.getString("password"))){
-					session.setAttribute("uName",userName);
-					rd = request.getRequestDispatcher("./UserHome.jsp");
-					rd.include(request, response);
-					//response.sendRedirect("./UserHome.jsp");
-				}
-				else{
-					out.println("<h3>Login UnSuccessfull. Either Username or Password is invalid. <a href = "+"./login.jsp>Please try again</a>.</h3>");
-				}
-			}
-			while(rsAdmin.next()){
-				if(userName.equals(rsAdmin.getString("user_name")) && password.equals(rsAdmin.getString("password"))){
-					session.setAttribute("uName",userName);
-					rd = request.getRequestDispatcher("./AdminHome.jsp");
-					rd.include(request, response);
-					//response.sendRedirect("./AdminHome.jsp");
-				}
-				else{
-					out.println("<h3>Login UnSuccessfull. Either Username or Password is invalid. <a href = "+"./login.jsp>Please try again</a>.</h3>");
-				}
-			}
-			*/
 		} catch(Exception e){
 			out.println("Internal Error!!"+e.getMessage());
 			out.println("<br><a href = "+"./login.jsp"+">Click here to Login again<a>");
