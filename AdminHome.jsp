@@ -11,7 +11,7 @@
 	</head>
 
 	<body>
-		<% String adminName = (String)request.getAttribute("uname"); %>
+		<% String adminName = (String)session.getAttribute("uname"); %>
 		<%= "welcome "+adminName %>
 	</body>
 </html>
