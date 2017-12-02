@@ -32,9 +32,7 @@
 			</div><!--navigation-->
 				<div id="user">
 				<ul>
-					<li><a href="login.jsp" class="button">Login</a>
-					</li>
-					<li><a href="register.jsp" class="button">Register</a></li>
+					<li>Dont have an account?<a href="register.jsp" class="button">Register</a></li>
 				</ul>
 			</div><!--user-->
 		</div><!--header-->

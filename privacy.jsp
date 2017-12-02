@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,9 +23,14 @@
 			</div><!--navigation-->
 				<div id="user">
 				<ul>
-					<li><a href="login.jsp" class="button">Login</a>
-					</li>
-					<li><a href="register.jsp" class="button">Register</a></li>
+					<li><c:if test="${not empty uname}">
+						<li><a href = "profile.jsp">${uname}</a></li>
+						<li><a href="blood.jsp" class="button">logout</a></li>	
+					</c:if>
+					<c:if test="${empty uname}">
+						<li><a href="login.jsp" class="button">login</a></li>
+						<li><a href="register.jsp" class="button">Register</a></li>
+					</c:if></li></li>
 				</ul>
 			</div><!--user-->
 		</div><!--header-->

@@ -36,5 +36,33 @@
 		<servlet-name>UserLogout</servlet-name>
 		<url-pattern>/UserLogout</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BloodSearch</servlet-name>
+		<servlet-class>BloodSearch</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BloodSearch</servlet-name>
+		<url-pattern>/BloodSearch</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UserDto</servlet-name>
+		<servlet-class>UserDto</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserDto</servlet-name>
+		<url-pattern>/UserDto</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BloodBankReg</servlet-name>
+		<servlet-class>BloodBankReg</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BloodBankReg</servlet-name>
+		<url-pattern>/BloodBankReg</url-pattern>
+	</servlet-mapping>
+	
 	
 </web-app>

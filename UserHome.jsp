@@ -1,4 +1,8 @@
-
+<% 
+	if(session.getAttribute("uname") == null){
+		response.sendRedirect("blood.jsp");
+	}
+%>
 
 <html>
 	<head>
@@ -7,10 +11,6 @@
 	</head>
 
 	<body>
-
-		<%
-			String userName = (String)session.getAttribute("uname");
-		%>
 		
 		<div id="Wrap">
 			<div  id="header">
@@ -29,7 +29,7 @@
 				</div><!--navigation-->
 				<div id="user">
 						<ul>
-							<li><a href = "profile.jsp"><%= userName %></a></li>
+							<li><a href = "profile.jsp">${uname}</a></li>
 							<li><a href="./UserLogout" class="button">Logout</a></li>
 						</ul>
 				</div><!--user-->	
