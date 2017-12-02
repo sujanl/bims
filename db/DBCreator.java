@@ -8,12 +8,6 @@ public class DBCreator{
 			String com="com.mysql.jdbc.Driver";
 			DBCreator.createDb(stat, cn, com);
 			DBCreator.createTables(stat, cn, com);
-			if(cn == null){
-				System.out.println("Initaial process is completed.");
-			}
-			else{
-				System.out.println("Unable to complete initail process.");
-			}
 		}catch(Exception e){
 			System.out.println("Unable to complete initail process.\nError: "+e.getMessage());
 		}
@@ -46,17 +40,30 @@ public class DBCreator{
 			Class.forName(com);
 			cn=DriverManager.getConnection(url,"root","");
 			stat = cn.createStatement();
-			//crate user table
-			stat.executeUpdate(user_table);
-			System.out.println("'users' table created");
-			
-			//create admin table
-			stat.executeUpdate(admin_table);
-			System.out.println("'admins' table created");
 
+			//create user table
+			try{
+				stat.executeUpdate(user_table);
+				System.out.println("'users' table created");
+			}catch(Exception e){
+				System.out.println("Filed to create table 'users'.  Error: "+e.getMessage());
+			}
+					
+			//create admin table
+			try{
+				stat.executeUpdate(admin_table);
+				System.out.println("'admins' table created");
+			}catch(Exception e){
+				System.out.println("Filed to create tablr 'admins'.  Error: "+e.getMessage());
+			}
+			
 			//create  table for blood banks
-			stat.executeUpdate(blood_bank_table);
-			System.out.println("'bloodbank' table created");
+			try{
+				stat.executeUpdate(blood_bank_table);
+				System.out.println("'bloodbank' table created");
+			}catch(Exception e){
+				System.out.println("Filed to create table 'bloodbank'.  Error: "+e.getMessage());
+			}
 			
 			//add default admin account
 			stat.executeUpdate(admin_data);
