@@ -16,7 +16,7 @@
 				<div class="menu">
 					<ul>
 						<li><a href="blood.jsp">Home</a></li>
-						<li><a href="bloodbank.jsp">Blood Bank</a></li>
+						<li><a href="./BloodBank">Blood Bank</a></li>
 						<li><a href="bloodsearch.jsp">Search Blood</a></li>
 						<li><a href="aboutus.jsp">About us</a></li>
 					</ul>

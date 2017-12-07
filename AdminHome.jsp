@@ -3,6 +3,16 @@
 		response.sendRedirect("blood.jsp");
 	}
 %>
+
+<% String message = (String)request.getAttribute("alertMsg");%>
+
+<script type="text/javascript">
+    var msg = "<%=message%>";
+    if(msg!= "null"){
+    	alert(msg);	
+    }
+</script>
+
 <html>
 	<head>
 		<title>AdminHome</title>
@@ -31,6 +41,7 @@
 			<div id = "main">
 				<ul>
 					<li><a href="bankregister.jsp">Blood bank Registration</a></li>
+					<li>View bloodBanks</li>
 					<li>Add Admin(Comming soon)</li>
 					<li>View Users(Comming soon)</li>
 					<li>Find Users(Comming soon)</li>

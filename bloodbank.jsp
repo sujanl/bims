@@ -16,7 +16,7 @@
 				<div class="menu">
 					<ul>
 						<li><a href="blood.jsp">Home</a></li>
-						<li><a href="bloodbank.jsp">Blood Bank</a></li>
+						<li><a href="./BloodBank">Blood Bank</a></li>
 						<li><a href="bloodsearch.jsp">Search Blood</a></li>
 						<li><a href="aboutus.jsp">About us</a></li>
 					</ul>
@@ -39,8 +39,29 @@
 			<div id="main">
 				<div id="heading">
 					<h1>BLood Bank</h1>
-					Blood banks wll be displayed here (Comming soon).
 				</div><!--heading-->
+					<c:if test="${not empty bblist}">
+						<table border="1" width="303">
+							<tr>
+								<td>Name</td>
+								<td>Location</td>
+								<td>Contact</td>
+								<td>Email</td>
+							</tr>
+							<c:forEach items = "${bblist}" var = "gg">
+								<tr>
+									<td>${gg.name}</td>
+									<td>${gg.location}</td>
+									<td>${gg.contact}</td>
+									<td>${gg.email}</td>
+								</tr>
+							</c:forEach>
+						</table>	
+					</c:if>
+					<!--array list is empty condition -->
+					<c:if test ="${empty bblist}">
+						 No bloodbank registered.
+					</c:if>
 			</div><!--main-->
 			<div id="footer">
 				<a href="blood.jsp">BIMS</a>  @2017 Blood Info Management System  <a href="privacy.jsp">Privacy policies</a> | <a href="dmca.jsp">DMCA</a> | <a href="contactus.jsp">Contact us</a>

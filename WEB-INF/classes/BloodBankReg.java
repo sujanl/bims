@@ -18,14 +18,17 @@ public class BloodBankReg extends HttpServlet {
 			try{
 				Statement stat = cn.createStatement();
 				stat.executeUpdate(query);
-				out.println("Submission Sucessful");
+				request.setAttribute("alertMsg","Registration Successfull.");
 			}catch(Exception e){
-				out.println("Error: Submission Failed!!\n" + e.getMessage());
+				request.setAttribute("alertMsg","Registration Unsuccessfull.");
+				//out.println("Error: Submission Failed!!\n" + e.getMessage());
 			}
 
 		}catch(Exception e){
-			out.println("Connection Failed: \n" + e.getMessage());
+			request.setAttribute("alertMsg","Registration unsuccessfull.");
+			//out.println("Connection Failed: \n" + e.getMessage());
 		}
-			out.println("<a href='./bloodbank.jsp'> <input type='button' value='Return To Blood Bank.'></a>");
+		RequestDispatcher rd = request.getRequestDispatcher("./AdminHome.jsp");
+		rd.include(request, response);	
 	} 
 }

@@ -1,6 +1,5 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +16,7 @@
 				<div class="menu">
 					<ul>
 						<li><a href="blood.jsp">Home</a></li>
-						<li><a href="bloodbank.jsp">Blood Bank</a></li>
+						<li><a href="./BloodBank">Blood Bank</a></li>
 						<li><a href="bloodsearch.jsp">Search Blood</a></li>
 						<li><a href="aboutus.jsp">About us</a></li>
 					</ul>
@@ -44,6 +43,7 @@
 					<form name="bsearch" method="post" action="./BloodSearch">
 						<label>Blood Group</label><br>
 						<select name = "bloodGroup" class="textinput">
+							<option >Blood Group</option>
 							<option value= "a+">A+</option>
 							<option value= "a-">A-</option>
 							<option value= "b+">B+</option>
@@ -55,6 +55,7 @@
 							<input type="submit" name="search" value="Search">
 						</select>
 					</form>
+					<hr>
 				</div>
 				<!-- checks if array list is not empty and display the results in table-->
 				<c:if test="${not empty urlist}">

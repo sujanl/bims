@@ -64,5 +64,21 @@
 		<url-pattern>/BloodBankReg</url-pattern>
 	</servlet-mapping>
 	
-	
+	<servlet>
+		<servlet-name>BloodBank</servlet-name>
+		<servlet-class>BloodBank</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BloodBank</servlet-name>
+		<url-pattern>/BloodBank</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BankDto</servlet-name>
+		<servlet-class>BankDto</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BankDto</servlet-name>
+		<url-pattern>/BankDto</url-pattern>
+	</servlet-mapping>
 </web-app>
