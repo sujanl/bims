@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.*;
 
 public class DBCreator{
 	public static void main(String[] any){
@@ -35,7 +36,6 @@ public class DBCreator{
 		String user_table = "CREATE TABLE users(full_name VARCHAR(30), blood_group VARCHAR(30), sex VARCHAR(8), dob VARCHAR(30), address VARCHAR(30), phone VARCHAR(30), user_name VARCHAR(30), email VARCHAR(40), password VARCHAR(30), primary key(user_name));";
 		String admin_table = "CREATE TABLE admins(full_name VARCHAR(30), address VARCHAR(30), phone VARCHAR(30), email VARCHAR(30), user_name VARCHAR(40), password VARCHAR(30), primary key(user_name))";
 		String blood_bank_table = "CREATE TABLE bloodbank(name VARCHAR(30), location VARCHAR(30), contact VARCHAR(30), email VARCHAR(30))";
-		String admin_data = "INSERT into admins(user_name, password)values('admin','admin');";
 		try{
 			Class.forName(com);
 			cn=DriverManager.getConnection(url,"root","");
@@ -66,9 +66,14 @@ public class DBCreator{
 			}
 			
 			//add default admin account
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Create Admin Account\nUsername:");
+			String un = sc.nextLine();
+			System.out.println("Password:");
+			String pw = sc.nextLine();
+			String admin_data = "INSERT into admins(user_name, password)values('"+un+"','"+pw+"');";
 			stat.executeUpdate(admin_data);
-			System.out.println("****************************\nNOTE: DEFAULT ADMIN ACCOUNT:\nUSERNAME:admin\nPASSWORD:admin\n****************************");
-
+			System.out.println("Account created.");
 			return cn;
 		}catch(Exception e){
 			System.out.println("Unable to create table. Error: "+e.getMessage());
