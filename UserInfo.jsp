@@ -4,14 +4,6 @@
 	}
 %>
 
-<% String message = (String)request.getAttribute("alertMsg");%>
-
-<script type="text/javascript">
-    var msg = "<%=message%>";
-    if(msg!= "null"){
-    	alert(msg);	
-    }
-</script>
 
 <html>
 	<head>
@@ -39,14 +31,39 @@
 				</div><!--user-->	
 			</div><!--header-->
 			<div id = "main">
-				<ul>
-					<li><a href="bankregister.jsp">Blood bank Registration</a></li>
-					<li><a href="./AdminBloodBank">View bloodBanks</a></li>
-					<li>Add Admin(Comming soon)</li>
-					<li><a href="./UserInfo">Users Information</a></li>
-					<li>Find Users(Comming soon)</li>
-					<li>Others features(Comming soon)</li>
-				</ul>
+				<c:if test="${not empty urlist}">
+					<table>
+						<tr>
+							<td>FullName</td>
+							<td>Blood Group</td>
+							<td>Sex</td>
+							<td>DOB</td>
+							<td>Phone</td>
+							<td>Address</td>
+							<td>Email</td>
+							<td>UserName</td>
+							<td>Password</td>
+						</tr>
+						<c:forEach items = "${urlist}" var = "gg">
+							<tr>
+								<td>${gg.fullName}</td>
+								<td>${gg.bloodGroup}</td>
+								<td>${gg.sex}</td>
+								<td>${gg.dob}</td>
+								<td>${gg.address}</td>
+								<td>${gg.phone}</td>
+								<td>${gg.email}</td>
+								<td>${gg.userName}</td>
+								<td>${gg.password}</td>
+								<td><a href="./DeleteUser?id=${gg.userName}">Delete</a></td>
+							</tr>
+						</c:forEach>
+					</table>	
+				</c:if>
+				<!--array list is empty condition -->
+				<c:if test ="${empty urlist}">
+					<p>No Users found.</p>
+				</c:if>
 			</div><!--main-->
 
 			

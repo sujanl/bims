@@ -64,7 +64,6 @@
 			<input type="submit" name="register" value="Register" class="btn">
 			</div>
 		</form>
-		<br>Click<a href="bloodbank.jsp"> HERE </a> to go Blood Bank.
 		</div><!--register-->
 			</div><!--main-->
 			<div id="footer">

@@ -81,4 +81,31 @@
 		<servlet-name>BankDto</servlet-name>
 		<url-pattern>/BankDto</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AdminBloodBank</servlet-name>
+		<servlet-class>AdminBloodBank</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminBloodBank</servlet-name>
+		<url-pattern>/AdminBloodBank</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DeleteBank</servlet-name>
+		<servlet-class>DeleteBank</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteBank</servlet-name>
+		<url-pattern>/DeleteBank</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UserInfo</servlet-name>
+		<servlet-class>UserInfo</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserInfo</servlet-name>
+		<url-pattern>/UserInfo</url-pattern>
+	</servlet-mapping>
 </web-app>

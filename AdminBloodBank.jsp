@@ -1,3 +1,4 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <% 
 	if(session.getAttribute("uname") == null){
 		response.sendRedirect("blood.jsp");
@@ -39,14 +40,30 @@
 				</div><!--user-->	
 			</div><!--header-->
 			<div id = "main">
-				<ul>
-					<li><a href="bankregister.jsp">Blood bank Registration</a></li>
-					<li><a href="./AdminBloodBank">View bloodBanks</a></li>
-					<li>Add Admin(Comming soon)</li>
-					<li><a href="./UserInfo">Users Information</a></li>
-					<li>Find Users(Comming soon)</li>
-					<li>Others features(Comming soon)</li>
-				</ul>
+				<c:if test="${not empty bblist}">
+						<table border="1" width="303">
+							<tr>
+								<td>Name</td>
+								<td>Location</td>
+								<td>Contact</td>
+								<td>Email</td>
+							</tr>
+							<c:forEach items = "${bblist}" var = "gg">
+								<tr>
+									<td>${gg.name}</td>
+									<td>${gg.location}</td>
+									<td>${gg.contact}</td>
+									<td>${gg.email}</td>
+									<td><a href="./DeleteBank?id=${gg.name}">Delete</a></td>
+									<td><a href="">Edit</a></td>
+								</tr>
+							</c:forEach>
+						</table>	
+					</c:if>
+					<!--array list is empty condition -->
+					<c:if test ="${empty bblist}">
+						 No bloodbank registered.
+					</c:if>
 			</div><!--main-->
 
 			
