@@ -41,7 +41,7 @@
 					<h1>Login</h1>
 				</div><!--heading-->
 				<div id="login">
-					<form name="login" method="post" action="./UserLogin">
+					<form name="login" method="post" action="./Login">
 						<input type="text" name="userName" placeholder="UserName"><br><br>
 						<input type="password" name="password" placeholder="Password"><br><br>
 						<input type="submit" name="Login" value="Login">

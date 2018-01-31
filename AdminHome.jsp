@@ -4,13 +4,6 @@
 	}
 %>
 
-<% String message = (String)request.getAttribute("alertMsg");%>
-
-<script type="text/javascript">
-    var msg = "<%=message%>";
-    if(msg!= "null"){
-    	alert(msg);	
-    }
 </script>
 
 <html>
@@ -34,17 +27,19 @@
 				<div id="user">
 						<ul>
 							<li><a href = "AdminProfile.jsp">${uname}</a></li>
-							<li><a href="./UserLogout" class="button">Logout</a></li>
+							<li><a href="./Logout" class="button">Logout</a></li>
 						</ul>
 				</div><!--user-->	
 			</div><!--header-->
 			<div id = "main">
+				<div id="heading">
+					<h1>Welcome to Admin Home.</h1>
+				</div><!--heading-->
+
 				<ul>
 					<li><a href="bankregister.jsp">Blood bank Registration</a></li>
 					<li><a href="./AdminBloodBank">View bloodBanks</a></li>
-					<li>Add Admin(Comming soon)</li>
 					<li><a href="./UserInfo">Users Information</a></li>
-					<li>Find Users(Comming soon)</li>
 					<li>Others features(Comming soon)</li>
 				</ul>
 			</div><!--main-->

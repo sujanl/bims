@@ -4,11 +4,12 @@ import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-public class UserInfo extends HttpServlet{
+public class UserProfile extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		String query = "select * from users";
+		String id = (String)request.getSession().getAttribute("uname");
+		String query = "select * from users where user_name ='"+id+"'";
 		try{
 			Connection cn = MySqlConnector.getConnection();
 			Statement stat = cn.createStatement();
@@ -24,16 +25,14 @@ public class UserInfo extends HttpServlet{
 				user.setPhone(rs.getString("phone"));
 				user.setEmail(rs.getString("email"));
 				user.setUserName(rs.getString("user_name"));
-				user.setPassword(rs.getString("password"));
 				userArr.add(user);
-			}	
+			}
+			
 			request.setAttribute("urlist",userArr);
-			RequestDispatcher rd = request.getRequestDispatcher("./UserInfo.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("./profile.jsp");
 			rd.include(request,response);
 		}catch(Exception e){
-			request.setAttribute("alertMsg","Error occoured!!");
-			RequestDispatcher rd = request.getRequestDispatcher("./UserInfo.jsp");
-			rd.include(request,response);
+			//out.println("Error: "+ e.getMessage());
 		}
 	}
 }

@@ -1,16 +1,18 @@
-<% String message = (String)request.getAttribute("alertMsg");%>
+<%
+	String userName = (String)session.getAttribute("uname");
+%>
+<% 
+	if(session.getAttribute("uname") == null){
+		response.sendRedirect("blood.jsp");
+	}
+%>
 
-<script type="text/javascript">
-    var msg = "<%=message%>";
-    if(msg!= "null"){
-    	alert(msg);	
-    }
-</script>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<htm lang="en">
+<html>
 <head>
-	<meta charset="utf-8">
 	<title>Blood Info Management System</title>
 	<link rel="stylesheet" type="text/css" href="blood.css">
 </head>
@@ -32,16 +34,23 @@
 			</div><!--navigation-->
 				<div id="user">
 				<ul>
-					<li>Already have an acount?<a href="login.jsp" class="button">Login</a></li>
+					<li><c:if test="${not empty uname}">
+						<li><a href = "./UserProfile">${uname}</a></li>
+						<li><a href="./Logout" class="button">logout</a></li>	
+					</c:if>
+					<c:if test="${empty uname}">
+						<li><a href="login.jsp" class="button">login</a></li>
+						<li><a href="register.jsp" class="button">Register</a></li>
+					</c:if>
+					</li>				
 				</ul>
 			</div><!--user-->
 		</div><!--header-->
 			<div id="main">
 				<div id="heading">
-					<h1>Register</h1>
+					<h1>Edit Profile</h1>
 				</div><!--heading-->
-				<div id="register">
-				<form method="POST" action="./UserRegister" onsubmit="return Validate()" name="vform" >
+				<form method="POST" action="" onsubmit="return Validate()" name="vform" >
 					<div id="fullname_div">
 						<label>Full Name</label><br>
 						<input type = "text" name = "fullName" class="textinput" />
@@ -73,100 +82,48 @@
 						<input type = "text" name = "address" class="textinput" />
 						<div id="address_error"></div>
 					</div>
-					<div id="username_div">
-						<label>Username</label> <br>
-						<input type="text" name="userName" class="textinput">
-						<div id="name_error"></div>
-					</div>
+					
 					<div id="phone_div">
 						<label>Phone number</label> <br>
 						<input type="text" name="phone" class="textinput">
 						<div id="phone_error"></div>
 					</div>
-					<div id="email_div">
-						<label>Email</label> <br>
-						<input type="email" name="email" class="textinput">
-						<div id="email_error"></div>
-					</div>
-					<div id="password_div">
-						<label>Password</label> <br>
-						<input type="password" name="password" class="textinput">
-					</div>
-					<div id="pass_confirm_div">
-						<label>Password confirm</label> <br>
-						<input type="password" name="repassword" class="textinput">
-						<div id="password_error"></div>
-					</div><br>
+					
 					<div>
-					<input type="submit" name="register" value="Register" class="btn">
+					<input type="submit" name="save" value="Save" class="btn">
 					</div>
 				</form>
-		<br>Click <a href="login.jsp">HERE</a> to login.
-		</div><!--register-->
 			</div><!--main-->
 			<div id="footer">
 				<a href="blood.jsp">BIMS</a>  @2017 Blood Info Management System  <a href="privacy.jsp">Privacy policies</a> | <a href="dmca.jsp">DMCA</a> | <a href="contactus.jsp">Contact us</a>
 			</div><!--footer-->
 	</div><!--Wrap-->
 
-
 </body>
 </html>
-<!-- adding Javascript -->
+
+
+
 <script>
 
 	// SELECTING ALL TEXT ELEMENTS
 	var fullname = document.forms['vform']['fullName'];
 	var address = document.forms['vform']['address'];
-	var username = document.forms['vform']['userName'];
 	var phone = document.forms['vform']['phone'];
-	var email = document.forms['vform']['email'];
-	var password = document.forms['vform']['password'];
-	var password_confirm = document.forms['vform']['repassword'];
-
+	
 	// SELECTING ALL ERROR DISPLAY ELEMENTS
 	var fullname_error = document.getElementById('fullname_error');
 	var address_error = document.getElementById('address_error');
-	var name_error = document.getElementById('name_error');
 	var phone_error = document.getElementById('phone_error');
-	var email_error = document.getElementById('email_error');
-	var password_error = document.getElementById('password_error');
 
 	// SETTING ALL EVENT LISTENERS
 	fullname.addEventListener('blur', fullnameVerify, true);
 	address.addEventListener('blur', addressVerify, true);
-	username.addEventListener('blur', nameVerify, true);
 	phone.addEventListener('blur', phoneVerify, true);
-	email.addEventListener('blur', emailVerify, true);
-	password.addEventListener('blur', passwordVerify, true);
 
 	// validation function
-	function Validate() {
-		// validate username
-		if (username.value == "") {
-			username.style.border = "1px solid red";
-			document.getElementById('username_div').style.color = "black";
-			name_error.textContent = "Username is required";
-			username.focus();
-			return false;
-		}
-		// validate username
-		if (username.value.length < 3 || username.value.length > 15) {
-			username.style.border = "1px solid red";
-			document.getElementById('username_div').style.color = "black";
-			name_error.textContent = "Username must be at least 3 characters and less than 15 characters.";
-			username.focus();
-			return false;
-		}
-			/* validate username
-		if (username.value.length > 15) {
-			username.style.border = "1px solid red";
-			document.getElementById('username_div').style.color = "black";
-			name_error.textContent = "Username must be less than 15 characters";
-			username.focus();
-			return false;
-		}*/
-			// validate fullname
+	function Validate() {		
+		// validate fullname
 		if (fullname.value == "") {
 			fullname.style.border = "1px solid red";
 			document.getElementById('fullname_div').style.color = "black";
@@ -182,14 +139,7 @@
 			fullname.focus();
 			return false;
 		}
-			/* validate fullname
-		if (fullname.value.length > 30) {
-			fullname.style.border = "1px solid red";
-			document.getElementById('fullname_div').style.color = "black";
-			fullname_error.textContent = "Full name must be less than 30 characters";
-			fullname.focus();
-			return false;
-		}*/
+		
 		// validate phone
 		if (phone.value == "") {
 			phone.style.border = "1px solid red";
@@ -206,40 +156,7 @@
 			phone.focus();
 			return false;
 		}
-		/* validate phone
-		if (phone.value.length > 30) {
-			phone.style.border = "1px solid red";
-			document.getElementById('phone_div').style.color = "black";
-			phone_error.textContent = "Phone no. must be less than 30 characters";
-			phone.focus();
-			return false;
-		}*/
-		// validate email
-		if (email.value == "") {
-			email.style.border = "1px solid red";
-			document.getElementById('email_div').style.color = "black";
-			email_error.textContent = "Email is required";
-			email.focus();
-			return false;
-		}
-		// validate password
-		if (password.value == "") {
-			password.style.border = "1px solid red";
-			document.getElementById('password_div').style.color = "black";
-			password_confirm.style.border = "1px solid red";
-			password_error.textContent = "Password is required";
-			password.focus();
-			return false;
-		}
-
-		// check if the two passwords match
-		if (password.value != password_confirm.value) {
-			password.style.border = "1px solid red";
-			document.getElementById('pass_confirm_div').style.color = "black";
-			password_confirm.style.border = "1px solid red";
-			password_error.innerHTML = "The two passwords do not match";
-			return false;
-		}
+		
 		//validate address
 		if (address.value == "") {
 			address.style.border = "1px solid red";
@@ -267,14 +184,6 @@
 	}
 
 	// event handler functions
-	function nameVerify() {
-		if (username.value != "") {
-			username.style.border = "1px solid #5e6e66";
-			document.getElementById('username_div').style.color = "#5e6e66";
-			name_error.innerHTML = "";
-			return true;
-		}
-	}
 	function fullnameVerify() {
 		if (fullname.value != "") {
 			fullname.style.border = "1px solid #5e6e66";
@@ -300,29 +209,5 @@
 		}
 	}
 
-	function emailVerify() {
-		if (email.value != "") {
-			email.style.border = "1px solid #5e6e66";
-			document.getElementById('email_div').style.color = "#5e6e66";
-			email_error.innerHTML = "";
-			return true;
-		}
-	}
-	function passwordVerify() {
-		if (password.value != "") {
-			password.style.border = "1px solid #5e6e66";
-			document.getElementById('pass_confirm_div').style.color = "#5e6e66";
-			document.getElementById('password_div').style.color = "#5e6e66";
-			password_error.innerHTML = "";
-			return true;
-		}
-
-		if (password.value === password_confirm.value) {
-			password.style.border = "1px solid #5e6e66";
-			document.getElementById('pass_confirm_div').style.color = "#5e6e66";
-			password_error.innerHTML = "";
-			return true;
-		}
-	}
-
+	
 </script>

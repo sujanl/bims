@@ -4,11 +4,13 @@ import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-public class UserInfo extends HttpServlet{
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+public class UserSearch extends HttpServlet{
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		String query = "select * from users";
+		String type = (String)request.getParameter("type");
+		String key = (String)request.getParameter("key");
+		String query = "select * from users where "+type+" ='"+key+"'";
 		try{
 			Connection cn = MySqlConnector.getConnection();
 			Statement stat = cn.createStatement();
@@ -26,13 +28,14 @@ public class UserInfo extends HttpServlet{
 				user.setUserName(rs.getString("user_name"));
 				user.setPassword(rs.getString("password"));
 				userArr.add(user);
-			}	
+			}
+			request.setAttribute("searchKey",key);
 			request.setAttribute("urlist",userArr);
-			RequestDispatcher rd = request.getRequestDispatcher("./UserInfo.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("./UserSearch.jsp");
 			rd.include(request,response);
 		}catch(Exception e){
-			request.setAttribute("alertMsg","Error occoured!!");
-			RequestDispatcher rd = request.getRequestDispatcher("./UserInfo.jsp");
+			request.setAttribute("alertMsg","Error occoured!");
+			RequestDispatcher rd = request.getRequestDispatcher("./UserSearch.jsp");
 			rd.include(request,response);
 		}
 	}

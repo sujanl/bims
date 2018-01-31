@@ -29,8 +29,8 @@
 				</div><!--navigation-->
 				<div id="user">
 						<ul>
-							<li><a href = "profile.jsp">${uname}</a></li>
-							<li><a href="./UserLogout" class="button">Logout</a></li>
+							<li><a href = "./UserProfile">${uname}</a></li>
+							<li><a href="./Logout" class="button">Logout</a></li>
 						</ul>
 				</div><!--user-->	
 			</div><!--header-->
@@ -39,7 +39,6 @@
 			<div id="main">
 				<div id="web">
 					<h1>Blood Info Management System</h1><br><br>
-					<h2>Do you want to become a Voluntary Blood Donar?  <a href="register.jsp" class="button">Register</a></h2>
 				</div><!--web-->
 				<div id="content">
 					<img src="images/pic3.jpg" height="300px" width="400px">

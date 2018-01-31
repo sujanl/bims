@@ -24,8 +24,8 @@
 				<div id="user">
 				<ul>
 					<li><c:if test="${not empty uname}">
-						<li><a href = "profile.jsp">${uname}</a></li>
-						<li><a href="blood.jsp" class="button">logout</a></li>	
+						<li><a href = "./UserProfile">${uname}</a></li>
+						<li><a href="./UserLogout" class="button">logout</a></li>	
 					</c:if>
 					<c:if test="${empty uname}">
 						<li><a href="login.jsp" class="button">login</a></li>

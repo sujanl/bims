@@ -1,8 +1,19 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 <% 
 	if(session.getAttribute("uname") == null){
 		response.sendRedirect("blood.jsp");
 	}
 %>
+
+<% String message = (String)request.getAttribute("alertMsg");%>
+
+<script type="text/javascript">
+    var msg = "<%=message%>";
+    if(msg!= "null"){
+    	alert(msg);	
+    }
+</script>
 
 
 <html>
@@ -26,13 +37,35 @@
 				<div id="user">
 						<ul>
 							<li><a href = "AdminProfile.jsp">${uname}</a></li>
-							<li><a href="./UserLogout" class="button">Logout</a></li>
+							<li><a href="./Logout" class="button">Logout</a></li>
 						</ul>
 				</div><!--user-->	
 			</div><!--header-->
 			<div id = "main">
-				<c:if test="${not empty urlist}">
-					<table>
+				<div id="heading">
+					<h1>User Information</h1>
+				</div><!--heading-->
+				<h3>Search Users</h3>
+				<div id="bsearch">
+					<form name="userSearch" method="post" action="./UserSearch">
+						<label>Search By:</label><br>
+						<select name="type">
+							<option value="full_Name">Full Name</option>
+							<option value="blood_group">Blood Group</option>
+							<option value="sex">Sex</option>
+							<option value="adddress">Address</option>	
+							<option value="phone">Phone</option>
+							<option value="user_name">UserName</option>
+							<option value="email">Email</option>
+						</select>
+						<input type="text" name="key">
+						<input type="submit" value="Search">
+					</form>
+					<hr>
+				</div>
+				<h3>List of all Users:</h3>
+				<c:if test =  "${not empty urlist}">
+					<table border = 1>
 						<tr>
 							<td>FullName</td>
 							<td>Blood Group</td>
@@ -54,11 +87,11 @@
 								<td>${gg.phone}</td>
 								<td>${gg.email}</td>
 								<td>${gg.userName}</td>
-								<td>${gg.password}</td>
-								<td><a href="./DeleteUser?id=${gg.userName}">Delete</a></td>
+								<td>${gg.password}</td>	
+								<td><a href="./UserDelete?id=gg.userName">Delete</a></td>		
 							</tr>
 						</c:forEach>
-					</table>	
+					</table>
 				</c:if>
 				<!--array list is empty condition -->
 				<c:if test ="${empty urlist}">

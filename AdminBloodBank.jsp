@@ -35,12 +35,16 @@
 				<div id="user">
 						<ul>
 							<li><a href = "AdminProfile.jsp">${uname}</a></li>
-							<li><a href="./UserLogout" class="button">Logout</a></li>
+							<li><a href="./Logout" class="button">Logout</a></li>
 						</ul>
 				</div><!--user-->	
 			</div><!--header-->
 			<div id = "main">
+				<div id="heading">
+					<h1> BloodBanks</h1>
+				</div><!--heading-->
 				<c:if test="${not empty bblist}">
+						<h3>List of all Blood Banks:</h3>
 						<table border="1" width="303">
 							<tr>
 								<td>Name</td>
