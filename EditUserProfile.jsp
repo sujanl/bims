@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String userName = (String)session.getAttribute("uname");
 %>
@@ -8,7 +9,6 @@
 %>
 
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -50,49 +50,63 @@
 				<div id="heading">
 					<h1>Edit Profile</h1>
 				</div><!--heading-->
-				<form method="POST" action="" onsubmit="return Validate()" name="vform" >
-					<div id="fullname_div">
-						<label>Full Name</label><br>
-						<input type = "text" name = "fullName" class="textinput" />
-						<div id="fullname_error"></div>
-					</div>
-					<div id="blood_div">
-						<label>Blood Group</label><br>
-						<select name = "bloodGroup" class="textinput">
-							<option value= "a+">A+</option>
-							<option value= "a-">A-</option>
-							<option value= "b+">B+</option>
-							<option value= "b-">B-</option>
-							<option value= "ab+">AB+</option>
-							<option value= "ab-">AB-</option>
-							<option value= "o+">O+</option>
-							<option value= "o-">O-</option>
-						</select>
-					</div>
-					<div id="sex_div">
-						<label>Sex</label><br>
-						<input type="radio" name="sex" value="male">Male <input type="radio" name="sex" value="female">Female
-					</div>
-					<div id="dob_div">
-						<label>Date Of Birth</label><br>
-						<input type="date" name="dob" placeholder="DateOfBirth" class="textinput">
-					</div>
-					<div id="address_div">
-						<label>Address:</label><br>
-						<input type = "text" name = "address" class="textinput" />
-						<div id="address_error"></div>
-					</div>
-					
-					<div id="phone_div">
-						<label>Phone number</label> <br>
-						<input type="text" name="phone" class="textinput">
-						<div id="phone_error"></div>
-					</div>
-					
-					<div>
-					<input type="submit" name="save" value="Save" class="btn">
-					</div>
-				</form>
+				<c:forEach items= "${urlist}" var= "gg">
+					<form method="POST" action="./EditUserProfile" onsubmit="return Validate()" name="vform" >
+						<div id="fullname_div">
+							<label>Full Name</label><br>
+							<input type = "text" name = "fullName" value = "${gg.fullName}"class="textinput" />
+							<div id="fullname_error"></div>
+						</div>
+						<div id="blood_div">
+							<label>Blood Group</label><br>
+							<select name = "bloodGroup" class="textinput">
+								<option value = "${gg.bloodGroup}">${gg.bloodGroup}</option>
+								<option value= "a+">A+</option>
+								<option value= "a-">A-</option>
+								<option value= "b+">B+</option>
+								<option value= "b-">B-</option>
+								<option value= "ab+">AB+</option>
+								<option value= "ab-">AB-</option>
+								<option value= "o+">O+</option>
+								<option value= "o-">O-</option>
+							</select>
+						</div>
+						<div id="sex_div">
+							<label>Sex</label><br>
+							<c:if test = "${gg.sex eq 'male'}"> 
+								<input type="radio" name="sex" value="male" checked = "checked">
+							</c:if>
+							<c:if test = "${gg.sex ne 'male'}"> 
+								<input type="radio" name="sex" value="male">
+							</c:if>Male 
+							<c:if test = "${gg.sex eq 'female'}"> 
+								<input type="radio" name="sex" value="female" checked = "checked">
+							</c:if>
+							<c:if test = "${gg.sex ne'female'}"> 
+								<input type="radio" name="sex" value="female">
+							</c:if>Female
+						</div>
+						<div id="dob_div">
+							<label>Date Of Birth</label><br>
+							<input type="date" name="dob" placeholder="DateOfBirth" value = "${gg.dob}" class="textinput">
+						</div>
+						<div id="address_div">
+							<label>Address:</label><br>
+							<input type = "text" name = "address"  value = "${gg.address}"class="textinput" />
+							<div id="address_error"></div>
+						</div>
+						
+						<div id="phone_div">
+							<label>Phone number</label> <br>
+							<input type="text" name="phone" value = "${gg.phone}" class="textinput">
+							<div id="phone_error"></div>
+						</div>
+						
+						<div>
+						<input type="submit" name="save" value="Save" class="btn">
+						</div>
+					</form>
+				</c:forEach>
 			</div><!--main-->
 			<div id="footer">
 				<a href="blood.jsp">BIMS</a>  @2017 Blood Info Management System  <a href="privacy.jsp">Privacy policies</a> | <a href="dmca.jsp">DMCA</a> | <a href="contactus.jsp">Contact us</a>

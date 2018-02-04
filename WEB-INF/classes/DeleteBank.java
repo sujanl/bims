@@ -14,13 +14,13 @@ public class DeleteBank extends HttpServlet{
 			Statement stat = cn.createStatement();
 			stat.executeUpdate(query);
 			request.setAttribute("alertMsg", "Delete successfull!");
-			RequestDispatcher rd = request.getRequestDispatcher("/AdminBloodBank.jsp");
-			rd.include(request, response);
+			RequestDispatcher rd = request.getRequestDispatcher("/AdminBloodBank");
+			rd.forward(request, response);
 		}catch(Exception e){
 			//out.println(e.getMessage());
 			request.setAttribute("alertMsg", "Delete Unsuccessfull!");
 			RequestDispatcher rd = request.getRequestDispatcher("/AdminBloodBank.jsp");
-			rd.include(request, response);
+			rd.forward(request, response);
 		}
 	}
 }

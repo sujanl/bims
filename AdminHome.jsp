@@ -3,6 +3,15 @@
 		response.sendRedirect("blood.jsp");
 	}
 %>
+<% String message = (String)request.getAttribute("alertMsg");%>
+
+<script type="text/javascript">
+    var msg = "<%=message%>";
+    if(msg!= "null"){
+    	alert(msg);	
+    }
+</script>	
+
 
 </script>
 
@@ -20,15 +29,12 @@
 				<div id="logo">
 					<a href="AdminHome.jsp"><img src="images/logo.jpg" height="100px" width="200px;"></a>
 				</div><!--logo-->
-				<div id="navigation">
-					<div class="menu">
-					</div><!--menu-->
-				</div><!--navigation-->
+
 				<div id="user">
-						<ul>
-							<li><a href = "AdminProfile.jsp">${uname}</a></li>
-							<li><a href="./Logout" class="button">Logout</a></li>
-						</ul>
+					<ul>
+						<li><a href = "AdminProfile.jsp">${uname}</a></li>
+						<li><a href="./Logout" class="button">Logout</a></li>
+					</ul>
 				</div><!--user-->	
 			</div><!--header-->
 			<div id = "main">

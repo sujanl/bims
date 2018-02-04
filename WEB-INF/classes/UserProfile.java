@@ -9,6 +9,7 @@ public class UserProfile extends HttpServlet{
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		String id = (String)request.getSession().getAttribute("uname");
+		String msg = (String)request.getAttribute("alertMsg");
 		String query = "select * from users where user_name ='"+id+"'";
 		try{
 			Connection cn = MySqlConnector.getConnection();
@@ -27,8 +28,8 @@ public class UserProfile extends HttpServlet{
 				user.setUserName(rs.getString("user_name"));
 				userArr.add(user);
 			}
-			
 			request.setAttribute("urlist",userArr);
+			request.setAttribute("alertMsg",msg);
 			RequestDispatcher rd = request.getRequestDispatcher("./profile.jsp");
 			rd.include(request,response);
 		}catch(Exception e){

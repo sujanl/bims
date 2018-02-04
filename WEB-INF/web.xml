@@ -127,7 +127,6 @@
 		<url-pattern>/UserSearch</url-pattern>
 	</servlet-mapping>
 
-
 	<servlet>
 		<servlet-name>UserProfile</servlet-name>
 		<servlet-class>UserProfile</servlet-class>
@@ -135,5 +134,77 @@
 	<servlet-mapping>
 		<servlet-name>UserProfile</servlet-name>
 		<url-pattern>/UserProfile</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UserInfoForEdit</servlet-name>
+		<servlet-class>UserInfoForEdit</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserInfoForEdit</servlet-name>
+		<url-pattern>/UserInfoForEdit</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>EditUserProfile</servlet-name>
+		<servlet-class>EditUserProfile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EditUserProfile</servlet-name>
+		<url-pattern>/EditUserProfile</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UserEmail</servlet-name>
+		<servlet-class>UserEmail</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserEmail</servlet-name>
+		<url-pattern>/UserEmail</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>EditUserEmail</servlet-name>
+		<servlet-class>EditUserEmail</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EditUserEmail</servlet-name>
+		<url-pattern>/EditUserEmail</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UserPassword</servlet-name>
+		<servlet-class>UserPassword</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserPassword</servlet-name>
+		<url-pattern>/UserPassword</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>EditUserPassword</servlet-name>
+		<servlet-class>EditUserPassword</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EditUserPassword</servlet-name>
+		<url-pattern>/EditUserPassword</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BankInfoForEdit</servlet-name>
+		<servlet-class>BankInfoForEdit</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BankInfoForEdit</servlet-name>
+		<url-pattern>/BankInfoForEdit</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>EditBank</servlet-name>
+		<servlet-class>EditBank</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EditBank</servlet-name>
+		<url-pattern>/EditBank</url-pattern>
 	</servlet-mapping>
 </web-app>

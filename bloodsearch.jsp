@@ -59,7 +59,7 @@
 				</div>
 				<!-- checks if array list is not empty and display the results in table-->
 				<c:if test="${not empty urlist}">
-					<table>
+					<table border = 1>
 						<tr>
 							<td>FullName</td>
 							<td>Blood Group</td>

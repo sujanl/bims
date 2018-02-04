@@ -1,11 +1,13 @@
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <% 
 	if(session.getAttribute("uname") == null){
 		response.sendRedirect("blood.jsp");
 	}
 %>
 
-<% String message = (String)request.getAttribute("alertMsg");%>
+<% String message = (String)request.getAttribute("alertMsg");
+	request.removeAttribute("alertMsg");
+%>
 
 <script type="text/javascript">
     var msg = "<%=message%>";
@@ -28,7 +30,13 @@
 				<a href="AdminHome.jsp"><img src="images/logo.jpg" height="100px" width="200px;"></a>
 			</div><!--logo-->
 			<div id="navigation">
-
+				<div class="menu">
+					<ul>
+						<li><a href="bankregister.jsp">Bloodbank Registration</a></li>
+						<li><a href="./AdminBloodBank">BloodBanks</a></li>
+						<li><a href="./UserInfo">User Info</a></li>
+					</ul>
+				</div><!--menu-->
 			</div><!--navigation-->
 				<div id="user">
 					<ul>
@@ -45,7 +53,7 @@
 					<!-- checks if array list is not empty and display the results in table-->
 					<c:if test="${not empty urlist}">
 					<h3>Results for "${searchKey}"</h3>
-						<table>
+						<table border = 1>
 							<tr>
 								<td>FullName</td>
 								<td>Blood Group</td>
@@ -56,6 +64,7 @@
 								<td>Email</td>
 								<td>UserName</td>
 								<td>Password</td>
+								<td>Action</td>
 							</tr>
 							<c:forEach items = "${urlist}" var = "gg">
 								<tr>
@@ -68,7 +77,7 @@
 									<td>${gg.email}</td>
 									<td>${gg.userName}</td>
 									<td>${gg.password}</td>
-									<td><a href="./UserDelete?id=gg.userName">Delete</a></td>
+									<td><a href="./UserDelete?id=${gg.userName}">Delete</a></td>
 								</tr>
 							</c:forEach>
 						</table>	
@@ -79,7 +88,7 @@
 					</c:if>		
 			</div><!--main-->
 			<div id="footer">
-				<a href="blood.jsp">BIMS</a>  @2017 Blood Info Management System  <a href="privacy.jsp">Privacy policies</a> | <a href="dmca.jsp">DMCA</a> | <a href="contactus.jsp">Contact us</a>
+				<a href="blood.jsp">BIMS</a>  @2017 Blood Info Management System
 			</div><!--footer-->
 	</div><!--Wrap-->
 

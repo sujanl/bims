@@ -1,4 +1,5 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 <% 
 	if(session.getAttribute("uname") == null){
 		response.sendRedirect("blood.jsp");
@@ -27,17 +28,25 @@
 			<div  id="header">
 				<div id="logo">
 					<a href="AdminHome.jsp"><img src="images/logo.jpg" height="100px" width="200px;"></a>
-				</div><!--logo-->
-				<div id="navigation">
-					<div class="menu">
-					</div><!--menu-->
-				</div><!--navigation-->
-				<div id="user">
-						<ul>
-							<li><a href = "AdminProfile.jsp">${uname}</a></li>
-							<li><a href="./Logout" class="button">Logout</a></li>
-						</ul>
-				</div><!--user-->	
+			</div><!--logo-->
+			
+			<div id="navigation">
+				<div class="menu">
+					<ul>
+						<li><a href="bankregister.jsp">Bloodbank Registration</a></li>
+						<li><a href="./AdminBloodBank">BloodBanks</a></li>
+						<li><a href="./UserInfo">User Info</a></li>
+					</ul>
+				</div><!--menu-->
+			</div><!--navigation-->
+
+			<div id="user">
+				<ul>
+					<li><a href = "AdminProfile.jsp">${uname}</a></li>
+					<li><a href="./Logout" class="button">Logout</a></li>
+				</ul>
+			</div><!--user-->
+
 			</div><!--header-->
 			<div id = "main">
 				<div id="heading">
@@ -45,12 +54,13 @@
 				</div><!--heading-->
 				<c:if test="${not empty bblist}">
 						<h3>List of all Blood Banks:</h3>
-						<table border="1" width="303">
+						<table border="1">
 							<tr>
 								<td>Name</td>
 								<td>Location</td>
 								<td>Contact</td>
 								<td>Email</td>
+								<td>Action</td>
 							</tr>
 							<c:forEach items = "${bblist}" var = "gg">
 								<tr>
@@ -58,8 +68,7 @@
 									<td>${gg.location}</td>
 									<td>${gg.contact}</td>
 									<td>${gg.email}</td>
-									<td><a href="./DeleteBank?id=${gg.name}">Delete</a></td>
-									<td><a href="">Edit</a></td>
+									<td><a href="./DeleteBank?id=${gg.name}">Delete</a> <a href="./BankInfoForEdit?id=${gg.name}">Edit</a></td>
 								</tr>
 							</c:forEach>
 						</table>	

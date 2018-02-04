@@ -29,6 +29,6 @@ public class BloodBankReg extends HttpServlet {
 			//out.println("Connection Failed: \n" + e.getMessage());
 		}
 		RequestDispatcher rd = request.getRequestDispatcher("./AdminHome.jsp");
-		rd.include(request, response);	
+		rd.forward(request, response);	
 	} 
 }

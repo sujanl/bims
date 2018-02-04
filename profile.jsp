@@ -4,6 +4,15 @@
 	}
 %>
 
+<% String message = (String)request.getAttribute("alertMsg");%>
+
+<script type="text/javascript">
+    var msg = "<%=message%>";
+    if(msg!= "null"){
+    	alert(msg);	
+    }
+</script>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -30,18 +39,11 @@
 				</div><!--menu-->
 			</div><!--navigation-->
 				<div id="user">
-				<ul>
-					<li><c:if test="${not empty uname}">
+					<ul>
 						<li><a href = "./UserProfile">${uname}</a></li>
-						<li><a href="./Logout" class="button">logout</a></li>	
-					</c:if>
-					<c:if test="${empty uname}">
-						<li><a href="login.jsp" class="button">login</a></li>
-						<li><a href="register.jsp" class="button">Register</a></li>
-					</c:if>
-					</li>				
-				</ul>
-			</div><!--user-->
+						<li><a href="./Logout" class="button">logout</a></li>				
+					</ul>
+				</div><!--user-->
 		</div><!--header-->
 			<div id="main">
 				<div id="heading">
@@ -58,13 +60,14 @@
 					Username: ${gg.userName}<br>
 					Email: ${gg.email}<br>
 					<br>
-					<a href="./EditUserProfile">Edit your profile</a><br>
-						<a href="">Change Email</a><br>
-						<a href="">Change Password</a><br>
+					<hr>
+					<a href="./UserInfoForEdit">Edit your profile</a><br>
+					<a href="./UserEmail">Change Email</a><br>
+					<a href="./UserPassword">Change Password</a><br>
 				</c:forEach>
 			</div><!--main-->
 		<div id="footer">
-			<a href="blood.jsp">BIMS</a>  @2017 Blood Info Management System  <a href="privacy.jsp">Privacy policies</a> | <a href="dmca.jsp">DMCA</a> | <a href="contactus.jsp">Contact us</a>
+			<a href="UserHome.jsp">BIMS</a>  @2017 Blood Info Management System  <a href="privacy.jsp">Privacy policies</a> | <a href="dmca.jsp">DMCA</a> | <a href="contactus.jsp">Contact us</a>
 		</div><!--footer-->
 	</div><!--Wrap-->
 

@@ -24,10 +24,11 @@ public class AdminBloodBank extends HttpServlet{
 			}
 			request.setAttribute("bblist",bankArr);
 			RequestDispatcher rd = request.getRequestDispatcher("./AdminBloodBank.jsp");
-			rd.include(request,response);
+			rd.forward(request,response);
 		}catch(Exception e){
-			//out.println("Error: "+ e.getMessage());
-		}
+			request.setAttribute("alertMsg","Try again Later.");
+			RequestDispatcher rd = request.getRequestDispatcher("./AdminHome.jsp");
+			rd.forward(request,response);		}
 	}
 }
 

@@ -29,7 +29,7 @@ public class Login extends HttpServlet{
 			else if(rsAdmin.next()){
 				rd = request.getRequestDispatcher("./AdminHome.jsp");
 				session.setAttribute("uname",userName);
-				rd.include(request , response);
+				rd.forward(request , response);
 			}
 			else if(!rsUser.next() && !rsAdmin.next()){
 				request.setAttribute("alertMsg", "Username or password is incorrect");

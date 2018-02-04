@@ -6,7 +6,9 @@
 	}
 %>
 
-<% String message = (String)request.getAttribute("alertMsg");%>
+<% String message = (String)request.getAttribute("alertMsg");
+	request.removeAttribute("alertMsg");
+%>
 
 <script type="text/javascript">
     var msg = "<%=message%>";
@@ -32,6 +34,11 @@
 				</div><!--logo-->
 				<div id="navigation">
 					<div class="menu">
+						<ul>
+							<li><a href="bankregister.jsp">Bloodbank Registration</a></li>
+							<li><a href="./AdminBloodBank">BloodBanks</a></li>
+							<li><a href="./UserInfo">User Info</a></li>
+						</ul>
 					</div><!--menu-->
 				</div><!--navigation-->
 				<div id="user">
@@ -76,6 +83,7 @@
 							<td>Email</td>
 							<td>UserName</td>
 							<td>Password</td>
+							<td>Action</td>
 						</tr>
 						<c:forEach items = "${urlist}" var = "gg">
 							<tr>
@@ -88,7 +96,7 @@
 								<td>${gg.email}</td>
 								<td>${gg.userName}</td>
 								<td>${gg.password}</td>	
-								<td><a href="./UserDelete?id=gg.userName">Delete</a></td>		
+								<td><a href="./UserDelete?id=${gg.userName}">Delete</a></td>		
 							</tr>
 						</c:forEach>
 					</table>
