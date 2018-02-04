@@ -32,7 +32,7 @@
 	
 		<div id="user">
 			<ul>			
-				<li><a href = "profile.jsp">${uname}</a></li>
+				<li><a href = "./AdminProfile">${uname}</a></li>
 				<li><a href="./Logout" class="button">logout</a></li>								
 			</ul>
 			</div><!--user-->

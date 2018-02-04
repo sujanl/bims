@@ -40,7 +40,7 @@
 			</div><!--navigation-->
 				<div id="user">
 					<ul>
-						<li><a href = "AdminProfile.jsp">${uname}</a></li>
+						<li><a href = "./AdminProfile">${uname}</a></li>
 						<li><a href="./Logout" class="button">Logout</a></li>
 					</ul>
 			</div><!--user-->
