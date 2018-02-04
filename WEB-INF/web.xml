@@ -207,4 +207,13 @@
 		<servlet-name>EditBank</servlet-name>
 		<url-pattern>/EditBank</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AdminProfile</servlet-name>
+		<servlet-class>AdminProfile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminProfile</servlet-name>
+		<url-pattern>/AdminProfile</url-pattern>
+	</servlet-mapping>
 </web-app>

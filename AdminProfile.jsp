@@ -53,20 +53,17 @@
 					<h1> Profile</h1>
 				</div><!--heading-->
 
-				<c:forEach items = "${}" var = "">
-					Name: ${}<br>
-					Address: ${}<br>
-					Phone: ${}<br>
-					Username: ${}<br>
-					Email: ${}<br>
-					<br>
-					<hr>
-					<a href="">Edit your profile</a><br>
-					<a href="">Change Email</a><br>
-					<a href="">Change Password</a><br>
-				</c:forEach>
+				Name: <%= request.getAttribute("full_name") %><br>
+				Address: <%= request.getAttribute("address") %><br>
+				Phone: <%= request.getAttribute("phone") %><br>
+				Username: <%= request.getAttribute("user_name") %><br>
+				Email: <%= request.getAttribute("email") %><br>
+				<br>
+				<hr>
+				<a href="">Edit your profile</a><br>
+				<a href="">Change Email</a><br>
+				<a href="">Change Password</a><br>
 
-			
 			<div id="footer">
 				<a href="AdminHome.jsp">BIMS</a>  @2017 Blood Info Management System 
 			</div><!--footer-->
